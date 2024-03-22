@@ -8,6 +8,10 @@ export const Passengers = ({ send }) => {
     setUser((prevUser) => [...prevUser, value]);
     console.log(user);
   };
+
+  const goToTicker = () => {
+    send("DONE");
+  };
   return (
     <article className="passengers">
       <h2 className="text-2xl font-bold text-left mb-3">
@@ -31,7 +35,9 @@ export const Passengers = ({ send }) => {
           onChange={(e) => setValue(e.target.value)}
         />
         <button type="submit">Agregar pasajero</button>
-        <button className="bg-white text-black ml-4">Continuar</button>
+        <button className="bg-white text-black ml-4" onClick={goToTicker}>
+          Continuar
+        </button>
       </form>
     </article>
   );
