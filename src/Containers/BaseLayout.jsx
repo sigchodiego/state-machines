@@ -6,7 +6,7 @@ import { bookingMachine } from "../Machines/bookingMachine";
 export const BaseLayout = () => {
   const [state, send] = useMachine(bookingMachine);
 
-  console.log("nuestra maquina", state.value);
+  console.log("nuestra maquina", state.value, "contexto: ", state.context);
 
   return (
     <div className="BaseLayout p-6">

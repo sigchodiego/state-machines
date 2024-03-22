@@ -6,11 +6,12 @@ export const Passengers = ({ send }) => {
   const addUser = (e) => {
     e.preventDefault();
     setUser((prevUser) => [...prevUser, value]);
-    console.log(user);
+    send({ type: "ADD", value });
+    setValue("");
   };
 
   const goToTicker = () => {
-    send("DONE");
+    send({ type: "DONE" });
   };
   return (
     <article className="passengers">
