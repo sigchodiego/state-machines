@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Search = ({ send }) => {
+export const Search = ({ state, send }) => {
   const [selectedCountry, setSelectedCountry] = useState(""); // Estado local para almacenar el país seleccionado
   console.log(selectedCountry);
   const goToPassengers = () => {
@@ -12,7 +12,9 @@ export const Search = ({ send }) => {
     setSelectedCountry(country); // Actualizar el estado local con el país seleccionado
   };
 
-  const options = ["Mexico", "Venezuela", "Colombia"];
+  // const options = ["Mexico", "Venezuela", "Colombia"];
+  const options = state.context.countries;
+  console.log(options);
 
   return (
     <article className="container">
@@ -27,9 +29,9 @@ export const Search = ({ send }) => {
         <option value="" disabled>
           Escoge un país
         </option>
-        {options.map((option) => (
-          <option value={option} key={option}>
-            {option}
+        {options?.map((option) => (
+          <option value={option.name.common} key={option.cca2}>
+            {option.name.common}
           </option>
         ))}
       </select>
