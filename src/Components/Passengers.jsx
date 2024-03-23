@@ -13,6 +13,8 @@ export const Passengers = ({ state, send }) => {
   const isDisabled = () => {
     if (state.context.passengers.length === 0) {
       return "pointer-events-none opacity-45";
+    } else {
+      return "";
     }
   };
 
