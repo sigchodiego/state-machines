@@ -19,6 +19,7 @@ export const Passengers = ({ state, send }) => {
   };
 
   const goToTicker = () => {
+    console.log("go to ticket");
     send({ type: "DONE" });
   };
   return (
@@ -48,6 +49,7 @@ export const Passengers = ({ state, send }) => {
           type="button"
           className={`bg-white text-black ml-4 ${isDisabled()}`}
           onClick={goToTicker}
+          disabled={false}
         >
           Continuar
         </button>
