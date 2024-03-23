@@ -78,7 +78,7 @@ const bookingMachine = createMachine(
         on: {
           DONE: {
             target: "tickets",
-            guard: "validatePassenger",
+            com: "validatePassenger",
           },
           CANCEL: {
             target: "inicial",
