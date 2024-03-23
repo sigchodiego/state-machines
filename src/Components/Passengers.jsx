@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Passengers = ({ send }) => {
+export const Passengers = ({ state, send }) => {
   const [value, setValue] = useState("");
   const [user, setUser] = useState([]);
   const addUser = (e) => {
@@ -8,6 +8,12 @@ export const Passengers = ({ send }) => {
     setUser((prevUser) => [...prevUser, value]);
     send({ type: "ADD", value });
     setValue("");
+  };
+
+  const isDisabled = () => {
+    if (state.context.passengers.length === 0) {
+      return "pointer-events-none opacity-45";
+    }
   };
 
   const goToTicker = () => {
@@ -36,7 +42,11 @@ export const Passengers = ({ send }) => {
           onChange={(e) => setValue(e.target.value)}
         />
         <button type="submit">Agregar pasajero</button>
-        <button className="bg-white text-black ml-4" onClick={goToTicker}>
+        <button
+          type="button"
+          className={`bg-white text-black ml-4 ${isDisabled()}`}
+          onClick={goToTicker}
+        >
           Continuar
         </button>
       </form>

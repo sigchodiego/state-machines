@@ -76,7 +76,10 @@ const bookingMachine = createMachine(
       },
       passengers: {
         on: {
-          DONE: "tickets",
+          DONE: {
+            target: "tickets",
+            guard: "validatePassenger",
+          },
           CANCEL: {
             target: "inicial",
             actions: "cleanContext",
@@ -110,6 +113,9 @@ const bookingMachine = createMachine(
         countries: [],
         error: "",
       }),
+    },
+    guards: {
+      validatePassenger: (context) => context.passengers?.length > 0,
     },
   }
 );
